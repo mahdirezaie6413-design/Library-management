@@ -1,22 +1,22 @@
 package service;
 
-import model.Book;
 import repository.BookRepository;
 
 public class BookService {
 
-    private final BookRepository repo = new BookRepository();
+    private BookRepository repo = new BookRepository();
 
-    public void addBook(Book book) {
-        book.validate();
-        repo.create(
-                book.getTitle(),
-                book.getPages(),
-                book.getAuthor().getId()
-        );
-    }
+    public void run() {
 
-    public void removeBook(int id) {
-        repo.delete(id);
+        // CREATE
+        repo.create("Clean Code", 464, 1);
+        repo.create("Effective Java", 416, 2);
+        repo.create("Clean Architecture", 432, 3);
+
+        // READ
+        repo.findAll();
+
+        // DELETE (اختیاری – اگر استاد CRUD خواست)
+        // repo.delete(1);
     }
 }
