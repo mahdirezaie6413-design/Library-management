@@ -62,9 +62,9 @@ src/
 
 ---
 
-## 🖥 Sample Output
+##  Sample Output
 
-📚 Book List:
+## Book List:
 ID: 1 | Title: Clean Code | Author: Robert C. Martin
 ID: 2 | Title: Effective Java | Author: Joshua Bloch
 
