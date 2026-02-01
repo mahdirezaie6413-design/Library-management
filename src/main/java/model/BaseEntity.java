@@ -15,10 +15,6 @@ public abstract class BaseEntity {
     public void setId(int id) { this.id = id; }
     public void setName(String name) { this.name = name; }
 
-    public void printSummary() {
-        System.out.println("Entity: " + name + " (ID: " + id + ")");
-    }
-
     public abstract void validate();
     public abstract void printInfo();
 }
