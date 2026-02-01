@@ -1,48 +1,39 @@
 package model;
 
-import exception.InvalidInputException;
+import service.interfaces.Validatable;
 
-public class Book extends LibraryItem implements Validatable, Borrowable {
-
-    private Author author;
+public class Book extends BaseEntity implements Validatable {
     private int pages;
-    private boolean available = true;
+    private double price;
+    private String author;
+    private String isbn;
 
-    public Book(int id, String title, Author author, int pages) {
-        super(id, title);
-        this.author = author;
+    public Book(int id, String name, int pages, double price, String author, String isbn) {
+        super(id, name);
         this.pages = pages;
+        this.price = price;
+        this.author = author;
+        this.isbn = isbn;
     }
 
-    @Override
-    public String getItemType() {
-        return "Book";
-    }
+    public int getPages() { return pages; }
+    public double getPrice() { return price; }
+    public String getAuthor() { return author; }
+    public String getIsbn() { return isbn; }
 
-    @Override
-    public void displayInfo() {
-        // نام نویسنده را از شیء Author می‌گیرد
-        System.out.println("Book: " + getTitle() + " | " + (author != null ? author.getName() : "Unknown"));
-    }
+    // این متد از BaseEntity ارث‌بری شده:
+    // public String getName() { return super.getName(); }
 
     @Override
     public void validate() {
-        // فیلد title در کلاس LibraryItem تعریف شده، مطمئن شوید دسترسی دارد
-        if (getTitle() == null || getTitle().isEmpty())
-            throw new InvalidInputException("Title cannot be empty");
-        if (pages <= 0)
-            throw new InvalidInputException("Pages must be > 0");
-        if (author == null)
-            throw new InvalidInputException("Author required");
+        if (isbn == null || isbn.isEmpty()) {
+            throw new IllegalArgumentException("❌ ISBN نباید خالی باشد");
+        }
     }
 
     @Override
-    public boolean isAvailable() {
-        return available;
+    public void printInfo() {
+        System.out.printf("Book: %s | ISBN: %s | Pages: %d | Price: $%.2f | Author: %s%n",
+                getName(), isbn, pages, price, author);
     }
-
-    // گترها برای استفاده در BookRepository جهت ذخیره در دیتابیس
-    public Author getAuthor() { return author; }
-    public int getPages() { return pages; }
-    public void setAvailable(boolean available) { this.available = available; }
 }
