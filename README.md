@@ -1,55 +1,78 @@
 ## Library Management System
 
-## Java JDBC & PostgreSQL Project
+## Homework 4 – Java JDBC & PostgreSQL Project
 
-## Project Description
+---
 
-This project is a Java-based console application developed to demonstrate the practical use of JDBC (Java Database Connectivity) for interacting with a PostgreSQL database.
-The application performs basic database operations such as inserting and retrieving data while following standard JDBC practices.
+##  Project Description
 
-Objectives
+This project was developed as part of Homework 4 to demonstrate how Java applications can interact with relational databases using **JDBC (Java Database Connectivity)**.  
+It is a console‑based application that connects to a **PostgreSQL** database, performs basic operations such as inserting and retrieving records, and follows clean coding and layered architecture principles.
 
-To establish a secure connection between Java and PostgreSQL
+---
 
-To use PreparedStatement for executing SQL queries
+## Objectives
 
-To demonstrate basic INSERT and SELECT (JOIN) operations
+- Establish a secure connection between Java and PostgreSQL  
+- Use `PreparedStatement` for executing SQL queries safely  
+- Demonstrate basic `INSERT` and `SELECT (JOIN)` operations  
+- Display database records in a clear, structured console output  
+- Provide a practical academic example of JDBC usage  
 
-To display database records in a clear and structured console output
+---
 
-## Technologies Used
+##  Technologies Used
 
-Java
+- Java  
+- PostgreSQL  
+- pgAdmin  
+- JDBC  
+- IntelliJ IDEA  
 
-PostgreSQL
+---
 
-pgAdmin
+##  Database Structure
 
-JDBC
+**Database Name:** `library_management`
 
-IntelliJ IDEA
+**Tables:**
+- `authors` → stores author information  
+- `books` → stores book information with a foreign key reference to `authors`  
 
-Database Structure
+---
 
-## Database Name: library_management
+##  Project Structure
 
-Tables:
+src/
+└── main/
+└── java/
+├── model/               # Data classes such as Book and Author
+├── repository/          # Database access layer (JDBC queries)
+├── service/             # Business logic and validation
+├── controller/          # Handles user interaction with services
+└── main/                # Entry point (Main.java)
 
-authors (stores author information)
 
-books (stores book information with a foreign key reference to authors)
+##  Application Workflow
 
-## Application Workflow
+1. The application connects to the PostgreSQL database using JDBC.  
+2. A new book record is inserted into the `books` table via `PreparedStatement`.  
+3. Book data is retrieved using a `SELECT` query with a `JOIN` between `books` and `authors`.  
+4. The retrieved records are displayed in the console in a readable format.  
 
-The application connects to the PostgreSQL database using JDBC.
+---
 
-A book record is inserted into the books table using a PreparedStatement.
+## 🖥 Sample Output
 
-Book data is retrieved using a SELECT query with a JOIN between books and authors.
+📚 Book List:
+ID: 1 | Title: Clean Code | Author: Robert C. Martin
+ID: 2 | Title: Effective Java | Author: Joshua Bloch
 
-The retrieved data is displayed in the console in a readable format.
 
-## Conclusion
 
-This project provides a clear and practical example of how Java applications can interact with relational databases using JDBC.
-It follows clean code principles and demonstrates essential database operations required for academic and beginner-level projects.
+
+
+##  Conclusion
+
+This project provides a clear and practical example of how Java applications can interact with relational databases using JDBC.  
+It demonstrates essential database operations required for academic projects, adheres
