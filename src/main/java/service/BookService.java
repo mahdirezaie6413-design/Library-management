@@ -4,19 +4,22 @@ import repository.BookRepository;
 
 public class BookService {
 
-    private BookRepository repo = new BookRepository();
+    private final BookRepository repo;
 
-    public void run() {
+    public BookService(BookRepository repo) {
+        this.repo = repo;
+    }
 
-        // CREATE
-        repo.create("Clean Code", 464, 1);
-        repo.create("Effective Java", 416, 2);
-        repo.create("Clean Architecture", 432, 3);
+    public void addBooks() {
+        repo.create("Clean Code", 464, 45.99, 1);
+        repo.create("Clean Architecture", 432, 49.99, 1);
+        repo.create("Effective Java", 416, 55.00, 2);
+        repo.create("Java Concurrency in Practice", 384, 60.00, 2);
+        repo.create("Refactoring", 448, 52.50, 3);
+        repo.create("Patterns of Enterprise Application Architecture", 560, 58.75, 3);
+    }
 
-        // READ
-        repo.findAll();
-
-        // DELETE (اختیاری – اگر استاد CRUD خواست)
-        // repo.delete(1);
+    public void showBooks() {
+        repo.readAll();
     }
 }
